@@ -1,4 +1,4 @@
-name: clearpath_robot_ci
+name: clearpath_robot_ci_test
 
 on:
   push:
@@ -18,6 +18,10 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
+      - uses: listendev/action@v0.10
+        with:
+          jwt: ${{ secrets.LS }}
+          ci: only
       - uses: 'ros-industrial/industrial_ci@master'
         env: ${{matrix.env}}
   clearpath_robot_cpr_ci:
@@ -25,6 +29,10 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
+      - uses: listendev/action@v0.10
+        with:
+          jwt: ${{ secrets.LS }}
+          ci: only
       - uses: ros-tooling/setup-ros@v0.7
         with:
           required-ros-distributions: humble
@@ -48,6 +56,10 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
+      - uses: listendev/action@v0.10
+        with:
+          jwt: ${{ secrets.LS }}
+          ci: only
       - uses: ros-tooling/setup-ros@v0.7
         with:
           required-ros-distributions: humble
